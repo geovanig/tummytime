@@ -5,6 +5,9 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import com.tummytime.model.Pedido;
 import com.tummytime.model.StatusPedido;
 
@@ -12,6 +15,8 @@ public class PedidoDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String endereco;
 	private String latitude;
@@ -23,7 +28,7 @@ public class PedidoDTO implements Serializable{
 	
 	public PedidoDTO() {}
 
-	public PedidoDTO(long id, String endereco, String latitude, String longitude, Instant momento, StatusPedido status) {
+	public PedidoDTO(Long id, String endereco, String latitude, String longitude, Instant momento, StatusPedido status) {
 		this.id = id;
 		this.endereco = endereco;
 		this.latitude = latitude;
@@ -39,13 +44,13 @@ public class PedidoDTO implements Serializable{
 		longitude = entidade.getLongitude();
 		momento = entidade.getMomento();
 		status = entidade.getStatus();
-		produto = entidade.getProdutos().stream().map(x -> new ProdutoDTO(x)).collect(Collectors.toList());
+		produto = entidade.getProduto().stream().map(x -> new ProdutoDTO(x)).collect(Collectors.toList());
 	}
 
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

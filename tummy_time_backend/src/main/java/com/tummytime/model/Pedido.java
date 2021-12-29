@@ -37,7 +37,7 @@ public class Pedido implements Serializable{
 	
 	public Pedido() {}
 
-	public Pedido(long id, String endereco, String latitude, String longitude, Instant momento, StatusPedido status) {
+	public Pedido(Long id, String endereco, String latitude, String longitude, Instant momento, StatusPedido status) {
 		this.id = id;
 		this.endereco = endereco;
 		this.latitude = latitude;
@@ -48,7 +48,7 @@ public class Pedido implements Serializable{
 	public long getId() {
 		return id;
 	}
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -87,7 +87,7 @@ public class Pedido implements Serializable{
 		this.status = status;
 	}
 
-	public Set<Produto> getProdutos() {
+	public Set<Produto> getProduto() {
 		return produto;
 	}
 
