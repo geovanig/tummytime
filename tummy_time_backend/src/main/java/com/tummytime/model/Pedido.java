@@ -33,7 +33,7 @@ public class Pedido implements Serializable{
 	@JoinTable(name = "pedido_produto",
 			joinColumns = @JoinColumn(name = "pedido_id"),
 			inverseJoinColumns = @JoinColumn(name = "produto_id"))
-	private Set<Produto> produtos = new HashSet<>();
+	private Set<Produto> produto = new HashSet<>();
 	
 	public Pedido() {}
 
@@ -88,7 +88,7 @@ public class Pedido implements Serializable{
 	}
 
 	public Set<Produto> getProdutos() {
-		return produtos;
+		return produto;
 	}
 
 	@Override
