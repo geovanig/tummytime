@@ -3,9 +3,11 @@ package com.tummytime.service;
 import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.tummytime.dto.PedidoDTO;
 import com.tummytime.dto.ProdutoDTO;
 import com.tummytime.model.Pedido;
@@ -41,4 +43,14 @@ public class PedidoService {
 		pedido = repository.save(pedido);
 		return new PedidoDTO(pedido);
 	}
+	
+	@Transactional
+	public PedidoDTO atualizarStatus(Long id) {
+		@SuppressWarnings("deprecation")
+		Pedido pedido = repository.getOne(id);
+		pedido.setStatus(StatusPedido.ENTREGUE);
+		pedido = repository.save(pedido);
+		return new PedidoDTO(pedido);
+	}
+	
 }
